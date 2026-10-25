@@ -1,7 +1,3 @@
-CREATE DATABASE IF NOT EXISTS farm2connect;
-
-USE farm2connect;
-
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,

@@ -1,10 +1,14 @@
 const mysql = require("mysql2");
 
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT || 16001),
+    user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: "farm2connect"
+    database: process.env.DB_NAME || "defaultdb",
+    ssl: {
+        rejectUnauthorized: true
+    }
 });
 
 db.connect((err) => {
@@ -13,8 +17,7 @@ db.connect((err) => {
         return;
     }
 
-    console.log("MySQL connected successfully!");
+    console.log("Aiven MySQL connected successfully!");
 });
 
 module.exports = db;
-
